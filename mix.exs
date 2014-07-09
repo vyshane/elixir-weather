@@ -4,6 +4,8 @@ defmodule Weather.Mixfile do
   def project do
     [app: :weather,
      version: "0.0.1",
+     name: "Elixir Weather",
+     source_url: "https://github.com/vyshane/elixir-weather",
      elixir: "~> 0.14.2",
      deps: deps]
   end
@@ -12,7 +14,7 @@ defmodule Weather.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [applications: []]
+    [applications: [:httpotion]]
   end
 
   # Dependencies can be hex.pm packages:
@@ -25,6 +27,15 @@ defmodule Weather.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    []
+    [
+      {:httpotion, github: "myfreeweb/httpotion" },
+      {:jsonex, github: "marcelog/jsonex"},
+      {:ex_doc, github: "elixir-lang/ex_doc"},
+      {:markdown, github: "devinus/markdown"}
+    ]
+  end
+
+  defp escript_config do
+    [main_module: Issues.CLI]
   end
 end
