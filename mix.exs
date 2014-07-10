@@ -7,6 +7,7 @@ defmodule Weather.Mixfile do
      name: "Elixir Weather",
      source_url: "https://github.com/vyshane/elixir-weather",
      elixir: "~> 0.14.2",
+     escript: escript_config,
      deps: deps]
   end
 
@@ -36,6 +37,6 @@ defmodule Weather.Mixfile do
   end
 
   defp escript_config do
-    [main_module: Issues.CLI]
+    [main_module: Weather.CLI]
   end
 end
