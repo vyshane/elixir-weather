@@ -9,6 +9,7 @@ end
 defmodule Weather.Weather.Forecast do
 
   defstruct summary: "",
+    date: nil,
     min_temperature: nil,
     max_temperature: nil,
     humidity: nil
@@ -58,7 +59,7 @@ defmodule Weather.Weather do
     data = Jsonex.decode body
 
     current_summary = data
-      |> List.keyfind("hourly", 0, nil)
+      |> List.keyfind("currently", 0, nil)
       |> discard_key.()
       |> List.keyfind("summary", 0, nil)
       |> discard_key.()
@@ -93,6 +94,15 @@ defmodule Weather.Weather do
       day_summary = day_data
         |> List.keyfind("summary", 0, nil)
         |> discard_key.()
+        |> String.rstrip ?.
+
+      day_timestamp = day_data
+        |> List.keyfind("time", 0, nil)
+        |> discard_key.()
+
+      base_date = :calendar.datetime_to_gregorian_seconds({{1970,1,1},{0,0,0}})
+      {day_date, _time} = :calendar.gregorian_seconds_to_datetime(
+        base_date + day_timestamp)
 
       day_max_temperature = day_data
         |> List.keyfind("temperatureMax", 0, nil)
@@ -108,6 +118,7 @@ defmodule Weather.Weather do
 
       %Weather.Forecast{
         summary: day_summary,
+        date: day_date,
         min_temperature: day_min_temperature,
         max_temperature: day_max_temperature,
         humidity: day_humidity
@@ -117,6 +128,7 @@ defmodule Weather.Weather do
     forecast = forecast_data
       |> List.keyfind("data", 0, nil)
       |> discard_key.()
+      |> Enum.drop(1)
       |> Enum.map(&(parse_forecast.(&1)))
 
     {:ok, {current_weather, forecast}}
@@ -127,4 +139,3 @@ defmodule Weather.Weather do
   end
 
 end
-

@@ -6,4 +6,5 @@
   "jsonex": {:git, "git://github.com/marcelog/jsonex.git", "82e6c416eed5e791073427bf3079d7ab7b85a1e1", []},
   "jsx": {:git, "git://github.com/talentdeficit/jsx.git", "507fa4c41db33c81e925ab53f4d789d234aaff2f", []},
   "markdown": {:git, "git://github.com/devinus/markdown.git", "0345e2044ba71780ba02b2591f1017703d0fa148", []},
-  "pipe": {:git, "git://github.com/batate/elixir-pipes.git", "4b4646c0fc50b8ddeff780847fc487f3bcefdacf", []}}
+  "pipe": {:git, "git://github.com/batate/elixir-pipes.git", "4b4646c0fc50b8ddeff780847fc487f3bcefdacf", []},
+  "timex": {:package, "0.10.0"}}

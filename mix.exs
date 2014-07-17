@@ -29,11 +29,11 @@ defmodule Weather.Mixfile do
   # Type `mix help deps` for more examples and options
   defp deps do
     [
-      {:pipe, github: "batate/elixir-pipes"},
+      {:ex_doc, github: "elixir-lang/ex_doc"},
       {:httpotion, github: "myfreeweb/httpotion" },
       {:jsonex, github: "marcelog/jsonex"},
-      {:ex_doc, github: "elixir-lang/ex_doc"},
-      {:markdown, github: "devinus/markdown"}
+      {:markdown, github: "devinus/markdown"},
+      {:pipe, github: "batate/elixir-pipes"}
     ]
   end
 
