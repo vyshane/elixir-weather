@@ -1,6 +1,8 @@
 defmodule Weather.CLI do
 
   use Pipe
+  alias Weather.Location
+  alias Weather.Weather
 
   @moduledoc """
   Handle command line parsing and dispatch to the functions that will fetch
@@ -39,19 +41,31 @@ defmodule Weather.CLI do
   def process(location_name) do
     pipe_while(
       &no_error/1,
-      Weather.Location.fetch(location_name) 
-        |> output
+      Location.fetch(location_name)
+        |> print_location
+        |> fetch_weather
+        |> print_weather
     )
   end
 
-  def no_error({:ok, value}), do: true
+  def fetch_weather({:ok, location}) do
+    Weather.fetch(location.latitude, location.longitude)
+  end
+
+  def no_error({:ok, _}), do: true
   def no_error({:error, value}) do
     IO.puts value
     false
   end
 
-  def output({:ok, value}) do
-    IO.inspect value
+  def print_location({status, location}) do
+    IO.inspect location
+    {status, location}
+  end
+
+  def print_weather({status, weather}) do
+    IO.inspect weather
+    {status, weather}
   end
 
 end
