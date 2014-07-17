@@ -5,6 +5,8 @@ use Mix.Config
 
 config :weather, google_maps_web_service_url: "http://maps.googleapis.com/maps/api/geocode/json"
 config :weather, forecast_io_web_service_url: "https://api.forecast.io/forecast/"
+config :weather, forecast_io_api_key: ""
+config :weather, user_agent: ["User-agent": "Elixir Weather"]
 
 # Note this file is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this
