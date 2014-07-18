@@ -59,13 +59,13 @@ defmodule Weather.CLI do
   end
 
   def print_location({status, location}) do
-    IO.puts "Weather for #{location.name}"
+    IO.puts "\nWeather for #{location.name}"
     {status, location}
   end
 
   def print_weather({status, {current, forecast}}) do
     IO.puts "Currently: #{current.temperature}°, " <>
-      "#{current.humidity}% humidity, #{current.summary}"
+      "#{current.humidity}% humidity, #{current.summary}\n"
 
     Enum.map forecast, fn (day) ->
       {y, m, d} = day.date
@@ -76,6 +76,8 @@ defmodule Weather.CLI do
         "#{current.humidity}% humidity, " <>
         "#{day.summary}."
     end
+
+    IO.puts ""
 
     {status, "done"}
   end
