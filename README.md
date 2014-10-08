@@ -1,7 +1,7 @@
 elixir-weather
 ==============
 
-This is a simple command line utility that I wrote to teach myself Elixir.
+This is a simple command line utility that I wrote to teach myself [Elixir](http://elixir-lang.org).
 
 ```
 shane@rmbp > weather perth
@@ -18,5 +18,4 @@ Currently: 12.92°, 0.89% humidity, Light Rain
 27/7/2014: 18.29°|7.22°, 0.89% humidity, Clear throughout the day.
 ```
 
-Requires a Forecast.io API key, configured in the config/config.exs file.
-
+Requires a [Forecast.io](http://forecast.io) API key, configured in the config/config.exs file.
